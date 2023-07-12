@@ -65,6 +65,9 @@ def drag_release(event,widget,grid_info):
     dragging = False
 
 
+
+
+
 # when user selects their images
 def buildImageArray(filepaths):
     global imgLabels,  colSize, rowSize
@@ -88,6 +91,7 @@ def buildImageArray(filepaths):
         render = ImageTk.PhotoImage(load)
         img = Label(imgFrame, image=render)
         img.image = render
+        img.filepath = imagePath
         img.grid(row=curRow,column=curCol,padx=imageHeightPadding,pady=imageWidthPadding,sticky=E+W+S+N)
         imgLabels.append(img)
 

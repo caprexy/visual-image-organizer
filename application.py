@@ -2,13 +2,11 @@ from tkinter import *
 from PIL import ImageTk, Image
 from functions.imageArrayHelper import *
 from functions.activityFrameHelper import *
-from functions.topMenuHelper import buildMenubar, setTopMenuRoot
 
 
 
 # setup god window
 root = Tk()
-setTopMenuRoot(root)
 
 # setting up root geometry
 root.geometry("1000x900")
@@ -18,8 +16,6 @@ root.bind("<Button-1>",on_click_img_arr)
 
 # add other binds
 root.bind("<Configure>", resizeImageArray)
-
-root.config(menu=buildMenubar())
 
 
 
