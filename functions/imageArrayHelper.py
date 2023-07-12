@@ -2,19 +2,22 @@ from tkinter import *
 from PIL import ImageTk, Image
 import math
 
-root = None
-colSize = 0
-rowSize = 0
-imgFrame = None
-
+# image property values
 imageWidth = 200
 imageHeight = 300
 imageWidthPadding = 5
 imageHeightPadding = 5
 
+# frame information
+root = None
+colSize = 0
+rowSize = 0
+imgFrame = None
+dragging = False
+
+# images infomation
 imgLabels = []
 
-dragging = False
 
 def setImgArrRoot(rootIn):
     global root 
@@ -25,9 +28,13 @@ def changeOrder(widget1,widget2,initial):
     widget1.grid(row=initial['row'],column=initial['column'])
     widget2.grid(row=target['row'],column=target['column'])
 
-def on_click(event):
+    # needs to change the imgLabels so when recalculating the array size and reprinting    
+    index1 = imgLabels.index(widget1)
+    index2 = imgLabels.index(widget2)
+    imgLabels[index1], imgLabels[index2] = imgLabels[index2], imgLabels[index1]
+
+def on_click_img_arr(event):
     widget=event.widget
-    print(widget) 
     if isinstance(widget,Label):
         start=(event.x,event.y)
         grid_info=widget.grid_info()
@@ -58,15 +65,17 @@ def drag_release(event,widget,grid_info):
     dragging = False
 
 
+# when user selects their images
 def buildImageArray(filepaths):
+    global imgLabels,  colSize, rowSize
+
+    # clean up things to reprint
     clearImgFrame()
-    global imgLabels
     imgLabels = []
-    global colSize, rowSize
+    
+
     colSize = int(imgFrame.winfo_width()/(imageWidth+imageWidthPadding))
     rowSize = math.ceil(len(filepaths)/colSize)
-
-    #imgFrame.grid(column=colSize, row=rowSize, sticky=(N, W, E, S))
 
 
     imageIndex = 0
@@ -84,10 +93,10 @@ def buildImageArray(filepaths):
 
         imageIndex += 1
 
+# based on our images/labels recalculate sizes
 def resizeImageArray(event):
     global dragging
     if dragging: return
-    print("s")
     newWidth = event.width
     colSize = int(newWidth/(imageWidth+imageWidthPadding))
 
@@ -106,5 +115,4 @@ def clearImgFrame():
 def initalizeImageArrayFrame():
     global imgFrame
     imgFrame = Frame(root, bg="red")
-    # imgFrame.grid(column=0, row=0, sticky=(N, W, E, S))
     return imgFrame

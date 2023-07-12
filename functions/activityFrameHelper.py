@@ -12,5 +12,4 @@ def setActivityRoot(rootIn):
 def initalizeActivityFrame():
     global imgFrame
     imgFrame = Frame(root, bg="black")
-    # imgFrame.grid(column=0, row=1, sticky=(N, W, E, S))
     return imgFrame
