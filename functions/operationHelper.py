@@ -27,8 +27,8 @@ def rebuildNames(filenames, ascending):
 
     for path in filenames:
         directory, originFilename = os.path.split(path)
-        name, extension = os.path.splittext(originFilename)
+        name, extension = originFilename.split(".")
 
-        os.rename(path, directory+word+str(iteration)+extension)
+        os.rename(path, directory+"/"+word+str(iteration)+"."+extension)
 
         iteration += 1
