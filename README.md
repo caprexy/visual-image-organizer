@@ -7,5 +7,5 @@ left to right top to bottom like standard english, its possible to order the mod
 Ascending would mean that left to right means the modified date ascends or increase in the second created based on the time the program runs it.
 
 # Name
-Will simply rename using a-i, where left to right will become a-0, a-1, a-2, a-3, etc
+Will simply rename using a-i, where left to right will become a-0, a-1, a-2, a-3, etc. If descending/not ascending, will switch numbering to start at the end so its like etc, a-4, a-3, a-2, a-1 where a-1 is the last image in order (bottom right most)
 
