@@ -15,7 +15,7 @@ root.geometry("1000x900")
 root.bind("<Button-1>",on_click_img_arr)
 
 # add other binds
-root.bind("<Configure>", resizeImageArray)
+root.bind("<Configure>", resizeImgArrEvent)
 
 
 
@@ -32,7 +32,7 @@ mainWindow.add(initalizeActivityFrame(), stretch="always")
 mainWindow.add(initalizeImageArrayFrame(), stretch="always")
 
 # extra configs to dynamically recalculate image array sizes
-mainWindow.bind("<Configure>", resizeImageArray)
+mainWindow.bind("<Configure>", resizeImgArrEvent)
 
 
 
