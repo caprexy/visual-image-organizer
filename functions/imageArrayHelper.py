@@ -19,6 +19,8 @@ dragging = False
 imgLabels = []
 emptyImgArrIndex = -1
 
+dragTick = 0
+
 def setImgArrRoot(rootIn):
     global root 
     root = rootIn
@@ -47,13 +49,19 @@ def on_click_img_arr(event):
         root.unbind("<ButtonRelease-1>")
 
 def drag_motion(event,widget,start):
-    global dragging, imgLabels
+    global dragging, imgLabels, dragTick
     dragging = True
     x = widget.winfo_x()+event.x-start[0]
     y = widget.winfo_y()+event.y-start[1] 
     widget.lift()
     widget.place(x=x,y=y)
 
+
+    dragTick+=1
+    if(dragTick % 100 == 0):
+        dragTick = 0
+    else:
+        return
     # find next two closest widgets
     # get X midpoint of image and find the closests two widgets
     mouseX,mouseY=root.winfo_pointerxy()
