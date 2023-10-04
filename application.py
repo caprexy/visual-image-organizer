@@ -1,8 +1,6 @@
 from tkinter import *
-from PIL import ImageTk, Image
-from functions.imageArrayHelper import *
-from functions.activityFrameHelper import *
-
+from functions.imageArrayHelper import initalizeImageArrayFrame, setImgArrRoot, resizeImgArrEvent, on_click_img_arr
+from functions.activityFrameHelper import initalizeActivityFrame, setActivityRoot
 
 
 # setup god window
